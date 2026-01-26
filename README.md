@@ -51,6 +51,33 @@ go run main.go
 
 The proxy server will start on port `8090`.
 
+### Using Docker
+
+You can use the precompiled Docker image from GitHub Container Registry:
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/sarperavci/upstreamgate:latest
+
+# Run the container
+docker run -d -p 8090:8090 --name upstreamgate ghcr.io/sarperavci/upstreamgate:latest
+
+# Check logs
+docker logs upstreamgate
+```
+
+Or build the Docker image yourself:
+
+```bash
+# Build the image
+docker build -t upstreamgate .
+
+# Run the container
+docker run -d -p 8090:8090 --name upstreamgate upstreamgate
+```
+
+The Docker image uses a multi-stage build with a minimal `scratch` base for the smallest possible size.
+
 ## Usage
 
 ### Starting the Proxy
